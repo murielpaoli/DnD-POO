@@ -21,4 +21,3 @@ export default class PVP extends Battle {
     return this.fight();
   }
 }
-
