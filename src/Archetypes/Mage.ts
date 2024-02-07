@@ -16,5 +16,5 @@ export default class Mage extends Archetype {
 
   static createdArchetypeInstances(): number {
     return Mage._mageInstances;
-    }
+  }
 }

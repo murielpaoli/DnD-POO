@@ -1,20 +1,22 @@
-// Arquivo Halfling.ts
-
 import Race from './Race';
 
-let halflingInstancesCounter = 0;
-
 export default class Halfling extends Race {
-    constructor(name: string, dexterity: number) {
-        super(name, dexterity);
-        halflingInstancesCounter += 1;
-    }
+  private static instances = 0;
+  private readonly _maxLifePoints = 60;
 
-    get maxLifePoints(): number {
-        return 60;
-    }
+  constructor(
+    readonly name: string,
+    readonly dexterity: number,
+  ) {
+    super(name, dexterity);
+    Halfling.instances += 1;
+  }
 
-    static createdRacesInstances(): number {
-        return halflingInstancesCounter;
-    }
+  static override createdRacesInstances(): number {
+    return Halfling.instances;
+  }
+
+  override get maxLifePoints(): number {
+    return this._maxLifePoints;
+  }
 }

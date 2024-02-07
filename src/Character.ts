@@ -75,6 +75,7 @@ export default class Character implements Fighter {
   public attack(enemy: SimpleFighter) {
     enemy.receiveDamage(this._strength);
   }
+
   public levelUp(): void {
     this._maxLifePoints += getRandomInt(1, 10);
     this._strength += getRandomInt(1, 10);
@@ -86,6 +87,7 @@ export default class Character implements Fighter {
     }
     this._lifePoints = this._maxLifePoints;
   }
+  
   public special(enemy: SimpleFighter) {
     if (this._energy.amount >= 5) {
       this._energy.amount -= 5;

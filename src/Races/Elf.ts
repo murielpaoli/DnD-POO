@@ -1,20 +1,22 @@
-// Arquivo Elf.ts
-
 import Race from './Race';
 
-let elfInstancesCounter = 0;
-
 export default class Elf extends Race {
-    constructor(name: string, dexterity: number) {
-        super(name, dexterity);
-        elfInstancesCounter += 1;
-    }
+  private static instances = 0;
+  private readonly _maxLifePoints = 99;
 
-    get maxLifePoints(): number {
-        return 99;
-    }
+  constructor(
+    readonly name: string,
+    readonly dexterity: number,
+  ) {
+    super(name, dexterity);
+    Elf.instances += 1;
+  }
 
-    static createdRacesInstances(): number {
-        return elfInstancesCounter;
-    }
+  static override createdRacesInstances(): number {
+    return Elf.instances;
+  }
+
+  override get maxLifePoints(): number {
+    return this._maxLifePoints;
+  }
 }
